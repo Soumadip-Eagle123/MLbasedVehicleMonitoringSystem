@@ -16,8 +16,6 @@ def train_models():
 
     X = df[FEATURE_COLUMNS]
     y = df[TARGET_COLUMN]
-
-    # ---------- SCORE MODEL ----------
     print("Training Score Model...")
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
@@ -65,8 +63,6 @@ def train_models():
 
     joblib.dump(score_pipeline, SCORE_MODEL_PATH)
 
-
-    # ---------- ANOMALY MODEL ----------
     print("Training Anomaly Model...")
 
     anomaly_pipeline = Pipeline([

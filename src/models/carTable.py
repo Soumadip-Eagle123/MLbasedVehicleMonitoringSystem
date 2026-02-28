@@ -13,7 +13,6 @@ class Car(Base):
     manufacturing_year = Column(Integer)
     total_mileage = Column(Integer)
 
-    # ML fields
     age_years = Column(Integer)
     fuel_type_code = Column(Integer)
     service_history_code = Column(Integer)

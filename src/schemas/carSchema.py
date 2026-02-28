@@ -6,6 +6,5 @@ class CarCreate(BaseModel):
 
     total_mileage: int = Field(..., ge=0, le=300000)
 
-    # these are integer codes (0,1,2)
     fuel_type: int = Field(..., ge=0, le=2)
     service_history: int = Field(..., ge=0, le=2)

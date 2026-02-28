@@ -1,0 +1,65 @@
+# =========================
+# Python
+# =========================
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+.env
+.env.*
+!.env.example
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ML model artifacts
+*.pkl
+src/ml_model/artifacts/
+
+# =========================
+# Node / Frontend
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+frontend/.env.*
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Build / Production
+# =========================
+build/
+dist/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# System files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Tailwind cache
+# =========================
+.cache/

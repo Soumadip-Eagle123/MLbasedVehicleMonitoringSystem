@@ -15,7 +15,13 @@ export default function Register() {
       await api.post("/register", { name, email, password });
       navigate("/");
     } catch {
-      alert("Email already exists");
+      if (err.response?.status === 400) {
+    alert("Email already exists");
+  } else if (err.response?.status === 422) {
+    alert("Please enter a valid email address");
+  } else {
+    alert("Something went wrong");
+  }
     }
   };
 

@@ -14,9 +14,15 @@ export default function Login() {
       const res = await api.post("/login", { email, password });
       localStorage.setItem("user_id", res.data.user_id);
       navigate("/dashboard");
-    } catch {
-      alert("Invalid credentials");
-    }
+    } catch (err) {
+  if (err.response?.status === 401) {
+    alert("Invalid credentials");
+  } else if (err.response?.status === 422) {
+    alert("Please enter a valid email address");
+  } else {
+    alert("Something went wrong");
+  }
+}
   };
 
   return (

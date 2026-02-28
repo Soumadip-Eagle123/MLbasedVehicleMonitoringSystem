@@ -21,7 +21,7 @@ function App() {
     <Route path="/simulation/:carId" element={<Simulation />} />
     <Route path="/analytics/:carId" element={<Analytics />} />
   </Route>
-</Routes>
+</Routes> 
     </BrowserRouter>
   );
 }

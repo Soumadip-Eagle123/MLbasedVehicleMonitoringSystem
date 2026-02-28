@@ -30,11 +30,17 @@ src/ml_model/artifacts/
 # =========================
 # Node / Frontend
 # =========================
-frontend/node_modules/
+node_modules/
+**/node_modules/
+
 frontend/dist/
 frontend/.vite/
 frontend/.env
 frontend/.env.*
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Log files
 npm-debug.log*

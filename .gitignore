@@ -23,9 +23,6 @@ venv/
 .coverage
 htmlcov/
 
-# ML model artifacts
-*.pkl
-src/ml_model/artifacts/
 
 # =========================
 # Node / Frontend

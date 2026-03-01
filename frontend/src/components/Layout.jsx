@@ -1,21 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Layout() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const lightRef = useRef(null);
 
   const handleLogout = () => {
     localStorage.removeItem("user_id");
     navigate("/");
   };
+ useEffect(() => {
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  const SIZE = 600; 
+
+  const handleMouseMove = (e) => {
+    mouseX = e.clientX - SIZE / 2;
+    mouseY = e.clientY - SIZE / 2;
+  };
+
+  const animate = () => {
+    currentX += (mouseX - currentX) * 0.05;
+    currentY += (mouseY - currentY) * 0.05;
+
+    if (lightRef.current) {
+      lightRef.current.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    }
+
+    requestAnimationFrame(animate);
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+  animate();
+
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, []);
 
   return (
     <div className="min-h-screen relative text-white overflow-x-hidden">
 
-      {/* Animated Background */}
+      {/* Ocean Gradient Background */}
       <div className="wave-bg"></div>
+
+      {/* Subtle Underwater Light */}
+      <div ref={lightRef} className="water-light"></div>
 
       {/* Sidebar Toggle */}
       <button
@@ -41,7 +74,6 @@ export default function Layout() {
                        shadow-2xl z-40"
           >
             <div className="h-full flex flex-col justify-between p-8 pt-24">
-
               <div>
                 <h1 className="text-2xl font-bold text-blue-400 mb-12">
                   VehicleX

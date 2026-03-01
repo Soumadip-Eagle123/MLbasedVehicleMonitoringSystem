@@ -43,11 +43,7 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen relative text-white overflow-x-hidden">
-
-      {/* Ocean Gradient Background */}
       <div className="wave-bg"></div>
-
-      {/* Subtle Underwater Light */}
       <div ref={lightRef} className="water-light"></div>
 
       {/* Sidebar Toggle */}

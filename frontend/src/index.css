@@ -8,12 +8,11 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== Animated Wave Background ===== */
 
 .wave-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   background: linear-gradient(
     270deg,
     #0f172a,
@@ -23,6 +22,7 @@ body {
   );
   background-size: 800% 800%;
   animation: waveAnimation 20s ease infinite;
+  overflow: hidden;
 }
 
 @keyframes waveAnimation {
@@ -31,7 +31,26 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Glow Buttons ===== */
+.water-light {
+  position: fixed;
+  top: -250px;
+  left: -250px;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  z-index: -1;
+
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.08),
+    rgba(34, 211, 238, 0.05),
+    transparent 70%
+  );
+
+  filter: blur(140px);
+  transition: transform 0.15s ease-out;
+}
+
 
 .glow-btn {
   transition: all 0.3s ease;
@@ -40,12 +59,9 @@ body {
 .glow-btn:hover {
   transform: translateY(-2px) scale(1.07);
   box-shadow:
-    0 0 15px rgba(59, 130, 246, 0.8),
-    0 0 35px rgba(59, 130, 246, 0.5),
-    0 0 60px rgba(59, 130, 246, 0.3);
+    0 0 15px rgba(59, 130, 246, 0.6),
+    0 0 30px rgba(59, 130, 246, 0.3);
 }
-
-/* ===== Card Hover Effect ===== */
 
 .card-hover {
   transition: all 0.3s ease;
@@ -53,8 +69,9 @@ body {
 
 .card-hover:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
 }
+
 .input-style {
   @apply bg-slate-900 text-white px-4 py-3 rounded-lg 
          border border-white/20 

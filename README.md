@@ -104,6 +104,7 @@ Backend runs at:
 ```
 http://127.0.0.1:8000
 ```
+![Swagger docs(deployed)](assets/swagger_docs.jpeg)
 
 ---
 

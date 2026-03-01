@@ -30,3 +30,4 @@ joblib
 scikit-learn
 numpy
 pandas
+email-validator

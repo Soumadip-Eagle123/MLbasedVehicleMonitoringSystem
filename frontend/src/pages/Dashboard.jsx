@@ -24,7 +24,21 @@ export default function Dashboard() {
 
     fetchCars();
   }, [userId, navigate]);
+  const handleDelete = async (carId) => {
+  const confirmDelete = window.confirm("Are you sure you want to delete this car?");
+  if (!confirmDelete) return;
 
+  try {
+    await api.delete(`/cars/${carId}`);
+
+    // Remove deleted car from state instantly (no refresh needed)
+    setCars((prev) => prev.filter((car) => car.id !== carId));
+
+  } catch (err) {
+    console.log(err);
+    alert("Error deleting car");
+  }
+};
   return (
     <div className="max-w-6xl mx-auto px-6">
 
@@ -66,7 +80,7 @@ export default function Dashboard() {
               Year: {car.manufacturing_year}
             </p>
 
-            <div className="flex gap-4">
+            <div className="flex gap-3 flex-wrap">
               <button
                 onClick={() => navigate(`/simulation/${car.id}`)}
                 className="glow-btn bg-primary px-5 py-2 rounded-lg"
@@ -80,6 +94,12 @@ export default function Dashboard() {
               >
                 Analytics
               </button>
+              <button
+  onClick={() => handleDelete(car.id)}
+  className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-lg transition"
+>
+  Delete
+</button>
             </div>
           </div>
         ))}

@@ -5,7 +5,7 @@ from datetime import datetime
 from src.database import SessionLocal
 from src.models.carTable import Car
 from src.schemas.carSchema import CarCreate
-
+from src.models.logTable import Log
 router = APIRouter(prefix="/cars", tags=["Cars"])
 
 
@@ -56,3 +56,18 @@ def get_cars(user_id: int, db: Session = Depends(get_db)):
         }
         for car in cars
     ]
+
+@router.delete("/{car_id}")
+def delete_car(car_id: int, db: Session = Depends(get_db)):
+
+    car = db.query(Car).filter(Car.id == car_id).first()
+
+    if not car:
+        raise HTTPException(status_code=404, detail="Car not found")
+
+    db.query(Log).filter(Log.car_id == car_id).delete()
+
+    db.delete(car)
+    db.commit()
+
+    return {"message": "Car deleted successfully"}
